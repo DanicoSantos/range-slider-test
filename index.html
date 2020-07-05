@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Plugin CSS file with desired skin-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
+
+    <title>Document</title>
+    <style>
+      .results {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 50px auto;
+        width: 10%;
+        height: auto;
+        font-size: 2rem;
+        text-align: center;
+      }
+      
+      .irs--big .irs-handle {
+        background: url('slider.svg') no-repeat left bottom;
+        background-size: cover;
+        border: none;
+        top: 15px;
+        height: 50px;
+        width: 50px;
+        box-shadow: none;
+        transition: transform 0.5s;
+      }
+      
+      .irs--big .irs-handle:hover {
+        background: url('slider.svg') no-repeat left bottom;
+        background-size: cover;
+        border: none;
+        transform: scale(1.25);
+      }
+
+      .irs--big .irs-bar {
+        border: none;
+        background: #000;
+
+      }
+
+      .irs--big .irs-single {
+        background: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Range Slider Text</h1>
+    <ul>
+      <li>Step 1 - Verificar se funciona [ok] </li>
+      <li>Step 2 - Entender como funciona [ok]</li>
+      <li>Step 3 - Entender como pode ser personalizado [ok]</li>
+    </ul>
+
+
+    <input type="text" class="js-range-slider" name="my_range" value="" />
+    <div class="results">
+      <div class="value"></div>
+      <div class="cost"></div>
+    </div>
+
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--Plugin JavaScript file-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+    <script>
+      $(".js-range-slider").ionRangeSlider({
+        min: 0,
+        max: 4000,
+        step: 3,
+        grid: true,
+        skin: "big",
+        onStart: function(data) {
+          $('.value').text(data.from);
+          $('.cost').text(data.from * 5);
+        },
+        onChange: function(data) {
+          $('.value').text(data.from);
+          $('.cost').text(data.from * 5);
+        }
+
+      });
+
+      let myRange = $(".js-range-slider").data("ionRangeSlider");
+    </script>
+  </body>
+
+</html>
